@@ -44,3 +44,12 @@ above, is released under the [MIT license](LICENSE-CODE). Read more at the
 [1]: http://amzn.to/2vvBijB
 [2]: https://github.com/wesm/pydata-book/tree/1st-edition
 [3]: https://github.com/BrambleXu/pydata-notebook
+
+
+## rbguo added
+1.如何运行.ipynb 文件
+	https://blog.csdn.net/appleyuchi/article/details/73478272
+2.将.ipynb 转为 .py 
+
+File—>Download as—>python(.py)
+jupyter nbconvert --to script demo.ipynb   //将 demo.ipynb转为demo.py
