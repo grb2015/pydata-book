@@ -2,17 +2,17 @@
 # @Author: Teiei
 # @Date:   2018-05-20 09:51:25
 # @Last Modified by:   Teiei
-# @Last Modified time: 2018-05-20 12:05:54
+# @Last Modified time: 2018-05-21 22:11:47
 import numpy as np
 # Generate some random data
 # 1.np产生随机数 
-print('\n-------------------------1----------------------------\n')
+print('\n-------------------------1 np产生随机数 ----------------------------\n')
 data = np.random.randn(2, 3)	## 2行2列的随机矩阵 list  [ [],[],[] ]
 print(type(data))  ## <class 'numpy.ndarray'>
 print(data)
 
 # 2.对矩阵进行运算，numpy中国是对每个元素进行运算(这跟list = [ [],[],[] ] 不一样，python的list则是对List整体运算)。 
-print('\n--------------------------2----------------------------\n')
+print('\n--------------------------2 对矩阵进行运算，numpy中国是对每个元素进行运算----------------------------\n')
 d1 = data * 10
 d2 = data + data
 print('\n',d1)
@@ -27,7 +27,7 @@ test_array2 = test_array + test_array; ## 返回[[1, 2], [3, 4], [5, 6], [1, 2],
 print(test_array2)
 '''
 # 3.取得行数和列数 、元素的数据类型
-print('\n--------------------------3----------------------------\n')
+print('\n--------------------------3 取得行数和列数 、元素的数据类型----------------------------\n')
 print(data.shape)	# 获得行和列的值 ，返回一个tuple,即（行数，列数）
 #print(type(data.shape))
 print(data.dtype)   # 获得data中元素的数据类型
@@ -35,7 +35,7 @@ print(data.dtype)   # 获得data中元素的数据类型
 
 
 # 4.用np.array()来创建ndarray,传入参数是一个list
-print('\n--------------------------4----------------------------\n')
+print('\n--------------------------4创建ndarray----------------------------\n')
 # a. 一维
 data1 = [6, 7.5, 8, 0, 1]  ## 这里是Int和float的混合
 '''
@@ -61,7 +61,7 @@ a3 = np.arange(15)
 a4 = np.empty(10)
 print('\na1 = ',a1,'\n a2 = \n',a2,'\n a3 = ',a3,'\n a4 = ',a4) ## empty返回的是内存中的随机值，不建议使用empty
 
-print('\n--------------------------5----------------------------\n')
+print('\n--------------------------5.数据类型----------------------------\n')
 # 5.数据类型
 	# 5-1 可以在创建的时候指定类型
 arr1 = np.array([1, 2, 3], dtype=np.float64)
@@ -95,7 +95,7 @@ empty_uint32 = np.empty(8, dtype='u4')
 print('\nempty_uint32 = ', empty_uint32,'\nempty_uint32.dtype = ',empty_uint32.dtype)
 
 
-print('\n--------------------------6 NumPy数组的运算----------------------------\n')
+print('\n--------------------------6. NumPy数组的运算----------------------------\n')
 
 print("----6-1 运算都是作用在元素上---")
 arr = np.array([[1., 2., 3.], [4., 5., 6.]])
@@ -141,7 +141,7 @@ print(
 
 
 
-print("\n\n---6-4 2个二维数组-----")
+print("\n\n---6-4 2个矩阵(3维数组)-----")
 
 arr3d = np.array([  [[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]   ])
 # arr3d[0] =  [[1, 2, 3], [4, 5, 6]]
@@ -154,6 +154,26 @@ print('\n\narr3d = \n',arr3d,
 
 old_values = arr3d[0].copy()
 arr3d[0] = 42		## 这个会覆盖原来的，如果不想被覆盖，只有先copy
-print('after set arr3d[0] = 42 , arr3d = \n ',arr3d)
+print('\n\after set arr3d[0] = 42 , arr3d = \n ',arr3d)
 arr3d[0] = old_values
-print('after set old_values , arr3d = \n',arr3d)
+print('\n\after set old_values , arr3d = \n',arr3d)
+
+
+print('\n\arr3d[1, 0] = ',arr3d[1, 0])
+x = arr3d[1]
+print(	'\n\nx = arr3d[1],x =' ,x,
+		'\n\nx[0]= ',x[0]
+	)
+print("\n\n---------6-5 对矩阵随意切片 ---------------")
+print(	'arr =',arr,
+		'arr[1:6] =',arr[1:6]		## 注意这个[1,6]实际上是[1,6) 即不包括后面的
+	)
+
+print(	'\n\narr2d = ',		arr2d,
+		'\n\narr2d[:2] =' ,	arr2d[:2],	## 取前2行
+		'\n\narr2d[:2, 1:] =',arr2d[:2, 1:], ## 先取前2行，再对之前去的的取2,3列
+		'\n\narr2d[1, :2] =',arr2d[1, :2],  ## 取第2行前2列
+		'\n\narr2d[:2, 2] = ',arr2d[:2, 2],	## 取前2行，第2列 组成一个list
+		'\n\narr2d[:, :1] =',arr2d[:, :1])	## 去所有行，然后取第一列。即取表格的第一列
+arr2d[:2, 1:] = 0	## 设置前2行的后2列为0
+print('\n\nafter set arr2d[:2, 1:] = 0, arr2d =',arr2d)

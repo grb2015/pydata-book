@@ -24,7 +24,7 @@ my_list = list(range(1000000))
 # In[ ]:
 
 
-get_ipython().run_line_magic('time', 'for _ in range(10): my_arr2 = my_arr * 2')
+get_ipython().run_line_magic('time', 'for _ in range(10): my_arr2 = my_arr * 2')	# rbguo added 20180520 这里的_相当于i
 get_ipython().run_line_magic('time', 'for _ in range(10): my_list2 = [x * 2 for x in my_list]')
 
 
